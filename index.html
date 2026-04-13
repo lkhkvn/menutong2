@@ -3,157 +3,150 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bagabliss Digital Menu - Full Edition</title>
+    <title>The Roast House Digital Menu - Seamless Edition</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Montserrat:wght@400;700;900&display=swap"
       rel="stylesheet"
     />
     <style>
-  :root {
-    --primary-yellow: #f1ee3c;
-    --bg-dark: #0a0a0a;
-    --card-bg: #1a1a1a;
-    --text-white: #ffffff;
-    --accent-red: #ff4747;
-    /* Cân chỉnh gap để không chiếm quá nhiều diện tích dọc */
-    --safe-gap: clamp(6px, 1vh, 12px);
-    --container-padding: clamp(8px, 1.5vw, 20px);
-}
+      :root {
+        --primary-yellow: #f1ee3c;
+        --bg-dark: #0a0a0a;
+        --card-bg: #1a1a1a;
+        --text-white: #ffffff;
+        --accent-red: #ff4747;
+        --safe-gap: clamp(6px, 1vh, 12px);
+        --container-padding: clamp(8px, 1.5vw, 20px);
+      }
 
-* { 
-    box-sizing: border-box; 
-    margin: 0; 
-    padding: 0;
-}
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-body {
-    background-color: var(--bg-dark);
-    color: var(--text-white);
-    font-family: "Montserrat", sans-serif;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-}
+      body {
+        background-color: var(--bg-dark);
+        color: var(--text-white);
+        font-family: "Montserrat", sans-serif;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
 
-/* --- HEADER (Tối ưu chiều cao để nhường chỗ cho món ăn) --- */
-.menu-header {
-    text-align: center;
-    padding: clamp(5px, 1.2vh, 15px) 0;
-    border-bottom: 5px solid var(--primary-yellow);
-    background: #000;
-    flex-shrink: 0;
-}
+      /* --- HEADER --- */
+      .menu-header {
+        text-align: center;
+        padding: clamp(5px, 1.2vh, 15px) 0;
+        border-bottom: 5px solid var(--primary-yellow);
+        background: #000;
+        flex-shrink: 0;
+      }
 
-.menu-header h1 {
-    font-family: "Luckiest Guy", cursive;
-    font-size: clamp(2rem, 4.5vw, 5.5rem);
-    color: var(--primary-yellow);
-    margin: 0;
-    text-shadow: 3px 3px 0px var(--accent-red);
-    text-transform: uppercase;
-    line-height: 1;
-}
+      .menu-header h1 {
+        font-family: "Luckiest Guy", cursive;
+        font-size: clamp(2rem, 4.5vw, 5.5rem);
+        color: var(--primary-yellow);
+        margin: 0;
+        text-shadow: 3px 3px 0px var(--accent-red);
+        text-transform: uppercase;
+        line-height: 1;
+      }
 
-/* --- GRID LAYOUT (8 món: 2 cột x 4 hàng) --- */
-.menu-page {
-    min-width: 100%;
-    height: 100%;
-    padding: var(--container-padding);
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    /* minmax(0, 1fr) ngăn chặn việc nội dung đẩy hàng quá cao */
-    grid-template-rows: repeat(4, minmax(0, 1fr)); 
-    gap: var(--safe-gap);
-    flex-grow: 1;
-    box-sizing: border-box;
-}
+      /* --- SLIDER SYSTEM --- */
+      .slider-wrapper {
+        flex-grow: 1;
+        position: relative;
+        overflow: hidden;
+      }
 
-.menu-item {
-    display: flex;
-    background: var(--card-bg);
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1.5px solid #333;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-}
+      .slider-content {
+        display: flex;
+        height: 100%;
+        /* Hiệu ứng trượt mượt mà */
+        transition: transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+        will-change: transform;
+      }
 
-/* --- HÌNH ẢNH --- */
-.image-box {
-    width: 28%; /* Thu nhỏ nhẹ để tăng không gian cho text */
-    background: #000;
-    border-right: 3px solid var(--primary-yellow);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
+      .menu-page {
+        min-width: 100%;
+        height: 100%;
+        padding: var(--container-padding);
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, minmax(0, 1fr));
+        gap: var(--safe-gap);
+        box-sizing: border-box;
+        flex-shrink: 0;
+      }
 
-.item-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+      /* --- MENU ITEMS --- */
+      .menu-item {
+        display: flex;
+        background: var(--card-bg);
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1.5px solid #333;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+      }
 
-/* --- THÔNG TIN (Sửa lỗi mất chữ tại đây) --- */
-.item-info {
-    width: 72%;
-    padding: clamp(5px, 0.8vh, 12px) clamp(10px, 1.2vw, 20px);
-    display: flex;
-    flex-direction: column;
-    /* space-between đẩy tiêu đề lên trên và giá xuống dưới cùng */
-    justify-content: space-between; 
-}
+      .image-box {
+        width: 28%;
+        background: #000;
+        border-right: 3px solid var(--primary-yellow);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
 
-.item-info h2 {
-    font-family: "Luckiest Guy", cursive;
-    /* Giảm nhẹ cỡ chữ tối đa để không bị tràn dòng */
-    font-size: clamp(1rem, 2vw, 2.5rem); 
-    color: var(--primary-yellow);
-    margin: 0;
-    line-height: 1;
-    text-transform: uppercase;
-}
+      .item-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
 
-.item-info p {
-    /* Cỡ chữ mô tả nhỏ lại một chút để cân đối */
-    font-size: clamp(0.7rem, 1vw, 1.1rem); 
-    color: #bbb;
-    margin: 2px 0;
-    line-height: 1.2;
-    /* Khóa cứng tối đa 2 dòng mô tả */
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
+      .item-info {
+        width: 72%;
+        padding: clamp(5px, 0.8vh, 12px) clamp(10px, 1.2vw, 20px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
 
-/* --- GIÁ TIỀN (Nằm gọn ở đáy) --- */
-.price-tag {
-    font-weight: 900;
-    font-size: clamp(1.2rem, 2.5vw, 3.2rem);
-    color: #000;
-    background: var(--primary-yellow);
-    padding: 0px 15px;
-    border-radius: 6px;
-    align-self: flex-start;
-    box-shadow: 2px 2px 0px var(--accent-red);
-    line-height: 1.1;
-    margin-top: auto; /* Đảm bảo giá luôn nằm dưới cùng */
-}
+      .item-info h2 {
+        font-family: "Luckiest Guy", cursive;
+        font-size: clamp(1rem, 2vw, 2.3rem);
+        color: var(--primary-yellow);
+        margin: 0;
+        line-height: 1.1;
+        text-transform: uppercase;
+      }
 
-/* --- SLIDER CHUNG --- */
-.slider-wrapper {
-    flex-grow: 1;
-    position: relative;
-    overflow: hidden;
-}
+      .item-info p {
+        font-size: clamp(0.7rem, 1vw, 1.1rem);
+        color: #bbb;
+        margin: 2px 0;
+        line-height: 1.2;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
 
-.slider-content {
-    display: flex;
-    height: 100%;
-    transition: transform 1s ease-in-out;
-}
+      .price-tag {
+        font-weight: 900;
+        font-size: clamp(1.2rem, 2.5vw, 3.2rem);
+        color: #000;
+        background: var(--primary-yellow);
+        padding: 0px 15px;
+        border-radius: 6px;
+        align-self: flex-start;
+        box-shadow: 2px 2px 0px var(--accent-red);
+        line-height: 1.1;
+        margin-top: auto;
+      }
     </style>
   </head>
   <body>
@@ -163,100 +156,60 @@ body {
 
     <div class="slider-wrapper">
       <div class="slider-content" id="slider">
-        <div class="menu-page">
+        <div class="menu-page" id="first-page">
           <div class="menu-item">
-            <div class="image-box">
-              <img src="banh-mi-heo-quay.png" class="item-image" />
-            </div>
+            <div class="image-box"><img src="banh-mi-heo-quay.png" class="item-image" /></div>
             <div class="item-info">
-              <div>
-                <h2>Roast Pork Roll</h2>
-                <p>Cucumber, carrot, pate and traditional sauce.</p>
-              </div>
+              <div><h2>Roast Pork Roll</h2><p>Cucumber, carrot, pate and traditional sauce.</p></div>
               <div class="price-tag">$10.00</div>
             </div>
           </div>
           <div class="menu-item">
-            <div class="image-box">
-              <img src="xiumai.png" class="item-image" />
-            </div>
+            <div class="image-box"><img src="xiumai.png" class="item-image" /></div>
             <div class="item-info">
-              <div>
-                <h2>Shumai Roll</h2>
-                <p>Meatballs pork, carrots and special tomato sauce.</p>
-              </div>
+              <div><h2>Shumai Roll</h2><p>Meatballs pork, carrots and special tomato sauce.</p></div>
               <div class="price-tag">$10.00</div>
             </div>
           </div>
           <div class="menu-item">
-            <div class="image-box">
-              <img src="banh-mi-bo-removebg-preview.png" class="item-image" />
-            </div>
+            <div class="image-box"><img src="banh-mi-bo-removebg-preview.png" class="item-image" /></div>
             <div class="item-info">
-              <div>
-                <h2>Soft Beef Roll</h2>
-                <p>Juicy beef with our signature home-made gravy!</p>
-              </div>
+              <div><h2>Soft Beef Roll</h2><p>Juicy beef with our signature home-made gravy!</p></div>
               <div class="price-tag">$10.00</div>
             </div>
           </div>
           <div class="menu-item">
-            <div class="image-box">
-              <img src="vietnamess-roll.png" class="item-image" />
-            </div>
+            <div class="image-box"><img src="vietnamess-roll.png" class="item-image" /></div>
             <div class="item-info">
-              <div>
-                <h2>Vietnamese Roll</h2>
-                <p>Classic combo with pate, chilli and crackle.</p>
-              </div>
+              <div><h2>Vietnamese Roll</h2><p>Classic combo with pate, chilli and crackle.</p></div>
               <div class="price-tag">$10.00</div>
             </div>
           </div>
           <div class="menu-item">
-            <div class="image-box">
-              <img src="Bbq-chicken-roll.png" class="item-image" />
-            </div>
+            <div class="image-box"><img src="Bbq-chicken-roll.png" class="item-image" /></div>
             <div class="item-info">
-              <div>
-                <h2>BBQ Chicken Roll</h2>
-                <p>Grilled chicken with pickled veg and spicy mayo.</p>
-              </div>
+              <div><h2>BBQ Chicken Roll</h2><p>Grilled chicken with pickled veg and spicy mayo.</p></div>
               <div class="price-tag">$10.00</div>
             </div>
           </div>
           <div class="menu-item">
-            <div class="image-box">
-              <img src="schnitresl-roll.png" class="item-image" />
-            </div>
+            <div class="image-box"><img src="schnitresl-roll.png" class="item-image" /></div>
             <div class="item-info">
-              <div>
-                <h2>Schnitzel Roll</h2>
-                <p>Crunchy chicken with lettuce, tomato and mayo.</p>
-              </div>
+              <div><h2>Schnitzel Roll</h2><p>Crunchy chicken with lettuce, tomato and mayo.</p></div>
               <div class="price-tag">$11.00</div>
             </div>
           </div>
           <div class="menu-item">
-            <div class="image-box">
-              <img src="Roast-beef-roll.png" class="item-image" />
-            </div>
+            <div class="image-box"><img src="Roast-beef-roll.png" class="item-image" /></div>
             <div class="item-info">
-              <div>
-                <h2>Soft Pork Roll</h2>
-                <p>Tender and juicy Pork, with gravy and crackle.</p>
-              </div>
+              <div><h2>Soft Pork Roll</h2><p>Tender and juicy Pork, with gravy and crackle.</p></div>
               <div class="price-tag">$10.00</div>
             </div>
           </div>
           <div class="menu-item">
-            <div class="image-box">
-              <img src="grilled-pork-roll.png" class="item-image" />
-            </div>
+            <div class="image-box"><img src="grilled-pork-roll.png" class="item-image" /></div>
             <div class="item-info">
-              <div>
-                <h2>Grilled Pork Roll</h2>
-                <p>Homemade sausage with sweet sauce and crackle.</p>
-              </div>
+              <div><h2>Grilled Pork Roll</h2><p>Homemade sausage with sweet sauce and crackle.</p></div>
               <div class="price-tag">$10.00</div>
             </div>
           </div>
@@ -264,240 +217,98 @@ body {
 
         <div class="menu-page">
           <div class="menu-item">
-            <div class="image-box">
-              <img src="Bbq-pork-roll.png" class="item-image" />
-            </div>
+            <div class="image-box"><img src="Bbq-pork-roll.png" class="item-image" /></div>
             <div class="item-info">
-              <div>
-                <h2>BBQ Pork Roll</h2>
-                <p>Sweet BBQ pork roll with hoisin sauce.</p>
-              </div>
+              <div><h2>BBQ Pork Roll</h2><p>Sweet BBQ pork roll with hoisin sauce.</p></div>
               <div class="price-tag">$10.00</div>
             </div>
           </div>
           <div class="menu-item">
-            <div class="image-box">
-              <img src="chicken-schnitzel-burge.png" class="item-image" />
-            </div>
+            <div class="image-box"><img src="chicken-schnitzel-burge.png" class="item-image" /></div>
             <div class="item-info">
-              <div>
-                <h2>Schnitzel Burger</h2>
-                <p>Crunchy chicken patty, lettuce and mayo.</p>
-              </div>
+              <div><h2>Schnitzel Burger</h2><p>Crunchy chicken patty, lettuce and mayo.</p></div>
               <div class="price-tag">$11.00</div>
             </div>
           </div>
           <div class="menu-item">
-            <div class="image-box">
-              <img src="Hot_dog.png" class="item-image" />
-            </div>
+            <div class="image-box"><img src="Hot_dog.png" class="item-image" /></div>
             <div class="item-info">
-              <div>
-                <h2>Hot Dog & Can</h2>
-                <p>Special deal with a drink!</p>
-              </div>
+              <div><h2>Hot Dog & Can</h2><p>Special deal with a drink!</p></div>
               <div class="price-tag">$9.00</div>
             </div>
           </div>
           <div class="menu-item">
-            <div class="image-box">
-              <img src="sand-whies.png" class="item-image" />
-            </div>
+            <div class="image-box"><img src="sand-whies.png" class="item-image" /></div>
             <div class="item-info">
-              <div>
-                <h2>Sandwich</h2>
-                <p>Fresh daily. (Small from $6.00)</p>
-              </div>
+              <div><h2>Sandwich</h2><p>Fresh daily. (Small from $6.00)</p></div>
               <div class="price-tag">$8.00</div>
             </div>
           </div>
           <div class="menu-item">
-            <div class="image-box">
-              <img src="hamburge.png" class="item-image" />
-            </div>
+            <div class="image-box"><img src="hamburge.png" class="item-image" /></div>
             <div class="item-info">
-              <div>
-                <h2>Hamburger</h2>
-                <p>Beef, Egg, Cheese, Bacon and Trio Sauce.</p>
-              </div>
+              <div><h2>Hamburger</h2><p>Beef, Egg, Cheese, Bacon and Trio Sauce.</p></div>
               <div class="price-tag">$10.00</div>
             </div>
           </div>
           <div class="menu-item">
-            <div class="image-box">
-              <img src="salad-roll.png" class="item-image" />
-            </div>
+            <div class="image-box"><img src="salad-roll.png" class="item-image" /></div>
             <div class="item-info">
-              <div>
-                <h2>Salad Roll</h2>
-                <p>Healthy choice with fresh vegetables.</p>
-              </div>
+              <div><h2>Salad Roll</h2><p>Healthy choice with fresh vegetables.</p></div>
               <div class="price-tag">$7.00</div>
             </div>
           </div>
           <div class="menu-item">
-            <div class="image-box">
-              <img src="egg-bacon.png" class="item-image" />
-            </div>
+            <div class="image-box"><img src="egg-bacon.png" class="item-image" /></div>
             <div class="item-info">
-              <div>
-                <h2>Egg & Bacon Bun</h2>
-                <p>The ultimate morning combo.</p>
-              </div>
+              <div><h2>Egg & Bacon Bun</h2><p>The ultimate morning combo.</p></div>
               <div class="price-tag">$8.00</div>
             </div>
           </div>
           <div class="menu-item">
-            <div class="image-box">
-              <img src="Com-chien-removebg-preview.png" class="item-image" />
-            </div>
+            <div class="image-box"><img src="Com-chien-removebg-preview.png" class="item-image" /></div>
             <div class="item-info">
-              <div>
-                <h2>Fried Rice</h2>
-                <p>Special fried rice with veggies.</p>
-              </div>
+              <div><h2>Fried Rice</h2><p>Special fried rice with veggies.</p></div>
               <div class="price-tag">$8.00</div>
             </div>
           </div>
         </div>
-
-        <div class="menu-page">
-          <div class="menu-item">
-            <div class="image-box">
-              <img src="potato-cake-removebg-preview.png" class="item-image" />
-            </div>
-            <div class="item-info">
-              <div>
-                <h2>POTATO CAKE</h2>
-                <p>
-                  Crispy golden sliced potato, lightly battered and deep-fried
-                  to perfection.
-                </p>
-              </div>
-              <div class="price-tag">$1.25 
-              </div>
-            </div>
-          </div>
-          <div class="menu-item">
-            <div class="image-box">
-              <img src="cha-gio-removebg-preview.png" class="item-image" />
-            </div>
-            <div class="item-info">
-              <div>
-                <h2>SPRING ROLL</h2>
-                <p>Crunchy chicken patty, lettuce and mayo.</p>
-              </div>
-              <div class="price-tag">$3.50</div>
-            </div>
-          </div>
-          <div class="menu-item">
-            <div class="image-box">
-              <img
-                src="battered-hot-dog-removebg-preview.png"
-                class="item-image"
-              />
-            </div>
-            <div class="item-info">
-              <div>
-                <h2>Battered hot dog</h2>
-                <p>Special deal with a drink!</p>
-              </div>
-              <div class="price-tag">$3.50</div>
-            </div>
-          </div>
-          <div class="menu-item">
-            <div class="image-box">
-              <img src="chiko-roll-removebg-preview.png" class="item-image" />
-            </div>
-            <div class="item-info">
-              <div>
-                <h2>Chiko roll</h2>
-                <p>Classic Aussie snack with beef and cabbage</p>
-              </div>
-              <div class="price-tag">$3.50</div>
-            </div>
-          </div>
-          <div class="menu-item">
-            <div class="image-box">
-              <img src="big-dim-sum-removebg-preview.png" class="item-image" />
-            </div>
-            <div class="item-info">
-              <div>
-                <h2>Big dim sum</h2>
-                <p>Large meaty dumpling with seasoned pork and cabbage</p>
-              </div>
-              <div class="price-tag">$2.50</div>
-            </div>
-          </div>
-          <div class="menu-item">
-            <div class="image-box">
-              <img
-                src="small-dim-sum-removebg-preview.png"
-                class="item-image"
-              />
-            </div>
-            <div class="item-info">
-              <div>
-                <h2>Small dim sum</h2>
-                <p>Bite-sized dumplings filled with savory pork meat.</p>
-              </div>
-              <div class="price-tag">$1.50</div>
-            </div>
-          </div>
-          <div class="menu-item">
-            <div class="image-box">
-              <img
-                src="pried-noodlee-removebg-preview.png"
-                class="item-image"
-              />
-            </div>
-            <div class="item-info">
-              <div>
-                <h2>Fried noodles</h2>
-                <p>Stir-fried noodles with fresh, savory veggies</p>
-              </div>
-              <div class="price-tag">$8.00</div>
-            </div>
-          </div>
-          <div class="menu-item">
-            <div class="image-box">
-              <img
-                src="fried-chicken-noodle-removebg-preview.png"
-                class="item-image"
-              />
-            </div>
-            <div class="item-info">
-              <div>
-                <h2>Fried Chicken noodles</h2>
-                <p>Tender chicken tossed with savory noodles</p>
-              </div>
-              <div class="price-tag">$10.00</div>
-            </div>
-          </div>
         </div>
+    </div>
 
-          <div class="menu-item">
-            <div class="image-box">
-              <img
-                src="fried-chicken-noodle-removebg-preview.png"
-                class="item-image"
-              />
-            </div>
     <script>
       const slider = document.getElementById("slider");
-      const dots = document.querySelectorAll(".dot");
+      const firstPage = document.getElementById("first-page");
+      
+      // Tạo bản sao của trang 1 để tạo vòng lặp vô tận
+      const clone = firstPage.cloneNode(true);
+      slider.appendChild(clone);
+
       let currentIdx = 0;
-      const totalPages = 3;
+      const totalPages = 2; // Số trang thực tế (không tính trang clone)
+      const slideDuration = 1200; // Khớp với transition CSS (1.2s)
 
       function slide() {
-        currentIdx = (currentIdx + 1) % totalPages;
+        currentIdx++;
+        
+        // Luôn bật transition khi bắt đầu trượt
+        slider.style.transition = "transform 1.2s cubic-bezier(0.645, 0.045, 0.355, 1)";
         slider.style.transform = `translateX(-${currentIdx * 100}%)`;
-        dots.forEach((dot, index) => {
-          dot.classList.toggle("active", index === currentIdx);
-        });
+
+        // Nếu đang ở trang clone (tức là sau khi trượt từ trang 2 qua)
+        if (currentIdx === totalPages) {
+          // Đợi hiệu ứng trượt kết thúc
+          setTimeout(() => {
+            // Tắt transition và nhảy về trang 1 thật sự mà người xem không thấy
+            slider.style.transition = "none";
+            currentIdx = 0;
+            slider.style.transform = `translateX(0)`;
+          }, slideDuration);
+        }
       }
 
-      setInterval(slide, 15000); // Chuyển trang mỗi 5 giây
+      // Thời gian chờ mỗi trang: 15 giây
+      setInterval(slide, 15000);
     </script>
   </body>
 </html>
